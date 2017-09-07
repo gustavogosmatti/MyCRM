@@ -6,9 +6,10 @@ public class ClienteDAO {
 
 	
 	
-public void Cadastrar(String nome, String sobrenome, String email, String telefone){
+public Cliente Cadastrar(String nome, String sobrenome, String email, String telefone){
 	
 	Cliente c = new Cliente(nome,sobrenome,email,telefone);
+	return c;
 		
 }
 }

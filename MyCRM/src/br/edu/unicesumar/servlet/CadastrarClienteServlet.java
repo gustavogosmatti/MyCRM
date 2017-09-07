@@ -2,12 +2,14 @@ package br.edu.unicesumar.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.unicesumar.model.Cliente;
 import br.edu.unicesumar.service.ClienteService;
 
 /**
@@ -29,6 +31,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cliente c;
 		
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
@@ -36,8 +39,14 @@ public class CadastrarClienteServlet extends HttpServlet {
 		String telefone = request.getParameter("telefone");
 		
 		ClienteService cs = new ClienteService();
-		cs.CadastrarCliente(nome, sobrenome, email, telefone);
+		c = cs.CadastrarCliente(nome, sobrenome, email, telefone);
 		
+		System.out.println(c.getNome());
+		
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher("/cadastrarCliente.jsp");
+//		rd.forward(request, response);
+				
+	
 		
 		
 		
